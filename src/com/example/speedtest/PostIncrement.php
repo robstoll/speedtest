@@ -17,14 +17,12 @@
  * 
  */
 
-namespace ch\tutteli\speedtest\dummy;
+namespace com\example\speedtest;
 
-class CalculationWithTraits extends ACalculation {
-
-    use AdditionTrait,
-        SubtractionTrait,
-        MultiplicationTrait,
-        DivisionTrait;
+class PostIncrement extends \ch\tutteli\speedtest\template\ASpeedTest{
+	protected function run(){
+		$i=0;
+		$i++;
+	}
 }
-
 ?>

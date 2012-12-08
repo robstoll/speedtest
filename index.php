@@ -16,26 +16,34 @@
  * 
  */
 
-function getFiles($path, $namespace) {
+function getFiles($namespaces) {
     $arr = array();
-    if ($handle = \opendir($path)) {
-        /* This is the correct way to loop over the directory. */
-        while (($entry = readdir($handle)) !== false) {
-            if ($entry != "." && $entry != ".." && \substr($entry, -4) == '.php') {
-                $arr[$path . $entry] = $namespace . \substr($entry, 0, -4);
+    foreach ($namespaces as $namespace) {
+        $path = __DIR__ . '/src/' . $namespace;
+
+        if ($handle = \opendir($path)) {
+            /* This is the correct way to loop over the directory. */
+            while (($entry = readdir($handle)) !== false) {
+                if ($entry != "." && $entry != ".." && \substr($entry, -4) == '.php') {
+                    $arr[] = $namespace .'\\'. \substr($entry, 0, -4);
+                }
             }
+            closedir($handle);
         }
-        closedir($handle);
     }
     return $arr;
 }
 
-$arr = getFiles(__DIR__ . '/src/ch/tutteli/speedtest/', 'ch\tutteli\speedtest\\');
-unset($arr[__DIR__ . '/src/ch/tutteli/speedtest/ASpeedTest.php']);
+$tests = getFiles(
+        array(
+            'ch\tutteli\speedtest',
+            'com\example\speedtest'
+        )
+);
 
 $options = '<option value="0">Please select</option>';
-foreach ($arr as $file) {
-    $options .= '<option>' . $file . '</option>';
+foreach ($tests as $test) {
+    $options .= '<option>' . $test . '</option>';
 }
 $jsOptions = str_replace('\\', '\\\\', $options);
 
