@@ -17,13 +17,14 @@
  * 
  */
 
-namespace ch\tutteli\speedtest;
+namespace ch\tutteli\speedtest\dummy;
 
-class MatrixAdditionTypeSafe extends template\AMatrixAddition {
+trait AdditionTrait {
 
-    protected function getValue() {
-        return 1;
+    public function addition($num, $num2) {
+        return $num + $num2;
     }
+    
 
 }
 

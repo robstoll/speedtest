@@ -19,10 +19,12 @@
 
 namespace ch\tutteli\speedtest;
 
-class MatrixAdditionTypeSafe extends template\AMatrixAddition {
+class ForLoop extends template\AForLoop {
 
-    protected function getValue() {
-        return 1;
+    protected function run() {
+        for ($i = 0; $i < count($this->arr); ++$i) {
+            
+        }
     }
 
 }

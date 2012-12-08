@@ -19,10 +19,11 @@
 
 namespace ch\tutteli\speedtest;
 
-class MatrixAdditionTypeSafe extends template\AMatrixAddition {
+class Traits extends template\ASpeedTest {
 
-    protected function getValue() {
-        return 1;
+    protected function run() {
+        $calculation = new dummy\CalculationWithTraits();
+        $calculation->calculation();
     }
 
 }

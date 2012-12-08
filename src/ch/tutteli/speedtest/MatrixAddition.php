@@ -21,7 +21,7 @@ namespace ch\tutteli\speedtest;
 
 class MatrixAddition extends template\AMatrixAddition {
 
-    protected function getMatrixValue() {
+    protected function getValue() {
         return "1";
     }
 

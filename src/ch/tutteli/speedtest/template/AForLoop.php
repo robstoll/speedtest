@@ -17,12 +17,14 @@
  * 
  */
 
-namespace ch\tutteli\speedtest;
+namespace ch\tutteli\speedtest\template;
 
-class MatrixAdditionTypeSafe extends template\AMatrixAddition {
+abstract class AForLoop extends ASpeedTest {
+    
+    protected $arr;
 
-    protected function getValue() {
-        return 1;
+    protected function setup() {
+        $this->arr = \range("A","Z");
     }
 
 }

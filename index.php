@@ -39,14 +39,14 @@ foreach ($arr as $file) {
 }
 $jsOptions = str_replace('\\', '\\\\', $options);
 
-$numberTest = isset($_GET['num']) && $_GET['num'] > 0 ? $_GET['num'] : 3;
+$numberTest = isset($_GET['num']) && $_GET['num'] > 0 ? $_GET['num'] : 1;
 ?>
 <html>
     <head>
         <title>Speed Test - tutteli.ch</title>
         <script type="text/javascript" src="jquery.min.js"></script>
         <script type="text/javascript">
-            var testCounter=<?php $numberTest + 1 ?>;
+            var testCounter=<?php echo $numberTest + 1 ?>;
             function addTest(){
                 $('#tests').append(
                 $('<tr><td>Test '+testCounter +'.1</td><td><select name="tests[]"><?php echo $jsOptions ?></select></td></tr>'+
@@ -60,6 +60,19 @@ $numberTest = isset($_GET['num']) && $_GET['num'] > 0 ? $_GET['num'] : 3;
                 font-family:"arial";
                 font-size:12px;
             }
+            input[type=submit]{
+                width:100px;
+                height:50px;
+            }
+            button{
+                display: block;
+                margin-top:10px;
+                padding:2px;
+                width:100px
+            }
+            img{
+                vertical-align:top;padding-right:5px;
+            }
         </style>
     </head>
     <body>
@@ -68,7 +81,7 @@ $numberTest = isset($_GET['num']) && $_GET['num'] > 0 ? $_GET['num'] : 3;
             <div style="float:left;margin-right: 20px;">
                 <table id="tests" style="border:0">
                     <tr>
-                        <td>How many runs:</td><td> <input type="text" name="howManyRuns" value="10"/></td>
+                        <td>How many runs:</td><td> <input type="text" name="howManyRuns" value="100"/></td>
                     </tr>
                     <?php for ($i = 1; $i <= $numberTest; ++$i) { ?>
                         <tr><td>Test <?php echo $i; ?>.1</td><td><select name="tests[]"><?php echo $options; ?></select></td></tr>
@@ -78,8 +91,8 @@ $numberTest = isset($_GET['num']) && $_GET['num'] > 0 ? $_GET['num'] : 3;
                 <br/>
             </div>
             <div>
-                <input type="submit" value="Run!" style="width:100px;height:50px;"/>
-                <button style="padding:2px;display: block;margin-top:10px;" onclick="addTest();return false;"><img src="add.png" onclick='' style="padding:0;padding-top:2px;"/>Add a test</button>
+                <input type="submit" value="Run!"/>
+                <button onclick="addTest();return false;"><img src="add.png"/>Add a test</button>
             </div>
             <div style="clear:both"></div>
         </form>

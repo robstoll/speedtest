@@ -17,12 +17,24 @@
  * 
  */
 
-namespace ch\tutteli\speedtest;
+namespace ch\tutteli\speedtest\dummy;
 
-class MatrixAdditionTypeSafe extends template\AMatrixAddition {
+abstract class ACalculation {
 
-    protected function getValue() {
-        return 1;
+    public abstract function addition($num, $num2);
+
+    public abstract function subtract($num, $num2);
+
+    public abstract function multiply($num, $num2);
+
+    public abstract function divide($num, $num2);
+
+    public function calculation() {
+        $num = $this->divide(
+                $this->multiply(
+                        $this->addition(1, $this->subtract(4, 1))
+                        , 5)
+                , 10);
     }
 
 }

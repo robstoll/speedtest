@@ -17,12 +17,26 @@
  * 
  */
 
-namespace ch\tutteli\speedtest;
+namespace ch\tutteli\speedtest\template;
 
-class MatrixAdditionTypeSafe extends template\AMatrixAddition {
+abstract class AMillionAddition extends ASpeedTest {
 
-    protected function getValue() {
-        return 1;
+    private $arr;
+
+    abstract protected function getValue();
+
+    protected function setup() {
+        $this->arr = array();
+        for ($i = 0; $i < 1000000; ++$i) {
+            $this->arr[] = $this->getValue();
+        }
+    }
+
+    protected function run() {
+        $number=0;
+        for ($i = 0; $i < 1000000; ++$i) {
+            $number += $this->arr[$i];
+        }
     }
 
 }

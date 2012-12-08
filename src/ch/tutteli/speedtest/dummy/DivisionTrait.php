@@ -17,12 +17,12 @@
  * 
  */
 
-namespace ch\tutteli\speedtest;
+namespace ch\tutteli\speedtest\dummy;
 
-class MatrixAdditionTypeSafe extends template\AMatrixAddition {
+trait DivisionTrait {
 
-    protected function getValue() {
-        return 1;
+    public function divide($num, $num2) {
+        return $num / $num2;
     }
 
 }

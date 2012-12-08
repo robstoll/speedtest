@@ -19,10 +19,12 @@
 
 namespace ch\tutteli\speedtest;
 
-class MatrixAdditionTypeSafe extends template\AMatrixAddition {
+class MillionAdditionTypeSafe extends template\AMillionAddition {
+
+    private $counter;
 
     protected function getValue() {
-        return 1;
+        return++$this->counter;
     }
 
 }

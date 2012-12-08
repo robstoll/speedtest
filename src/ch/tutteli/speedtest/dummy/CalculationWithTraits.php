@@ -17,14 +17,19 @@
  * 
  */
 
-namespace ch\tutteli\speedtest;
+namespace ch\tutteli\speedtest\dummy;
 
-class MatrixAdditionTypeSafe extends template\AMatrixAddition {
+/**
+ * Description of CalculationWithTraits
+ *
+ * @author Robert Stoll <rstoll@tutteli.ch>
+ */
+class CalculationWithTraits extends ACalculation {
 
-    protected function getValue() {
-        return 1;
-    }
-
+    use AdditionTrait,
+        SubtractionTrait,
+        MultiplicationTrait,
+        DivisionTrait;
 }
 
 ?>

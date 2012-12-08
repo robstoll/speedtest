@@ -17,13 +17,15 @@
  * 
  */
 
-namespace ch\tutteli\speedtest;
+namespace ch\tutteli\speedtest\template;
 
-class MatrixAdditionTypeSafe extends template\AMatrixAddition {
+abstract class ANamespace extends ASpeedTest {
 
-    protected function getValue() {
-        return 1;
+    protected function setup() {
+        //just to make sure the class definitions do not have to be loaded during test
+       new \ch\tutteli\speedtest\dummy\Foo();
     }
+
 
 }
 

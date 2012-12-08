@@ -24,12 +24,12 @@ abstract class AMatrixAddition extends ASpeedTest {
     private $matrix1;
     private $matrix2;
 
-    abstract protected function getMatrixValue();
+    abstract protected function getValue();
 
     protected function setup() {
         $this->matrix1 = array();
         $this->matrix2 = array();
-        $value = $this->getMatrixValue();
+        $value = $this->getValue();
 
         for ($i = 0; $i < 50; ++$i) {
             $this->matrix1[$i] = array();

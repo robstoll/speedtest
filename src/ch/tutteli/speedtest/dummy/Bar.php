@@ -17,14 +17,10 @@
  * 
  */
 
-namespace ch\tutteli\speedtest;
+namespace ch\tutteli\speedtest\dummy;
 
-class MatrixAdditionTypeSafe extends template\AMatrixAddition {
-
-    protected function getValue() {
-        return 1;
-    }
-
+class Bar {
+    
 }
 
 ?>

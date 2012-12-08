@@ -19,10 +19,10 @@
 
 namespace ch\tutteli\speedtest;
 
-class MatrixAdditionTypeSafe extends template\AMatrixAddition {
+class PHPFunctionCallShort  extends template\ASpeedTest {
 
-    protected function getValue() {
-        return 1;
+    protected function run() {
+        $name = str_replace("A","D","ABC");
     }
 
 }

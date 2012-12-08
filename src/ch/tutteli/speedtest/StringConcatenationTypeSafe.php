@@ -19,10 +19,11 @@
 
 namespace ch\tutteli\speedtest;
 
-class MatrixAdditionTypeSafe extends template\AMatrixAddition {
+class StringConcatenationTypeSafe extends template\ASpeedTest {
 
-    protected function getValue() {
-        return 1;
+    protected function run() {
+        $counter = 1;
+        $a = "Line " . ( (string) $counter);
     }
 
 }

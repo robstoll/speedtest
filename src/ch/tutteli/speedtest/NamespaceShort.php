@@ -19,12 +19,12 @@
 
 namespace ch\tutteli\speedtest;
 
-class MatrixAdditionTypeSafe extends template\AMatrixAddition {
+class NamespaceShort extends template\ANamespace {
 
-    protected function getValue() {
-        return 1;
+  
+    protected function run() {
+        new dummy\Foo();
     }
-
 }
 
 ?>

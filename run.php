@@ -76,7 +76,7 @@ if ($i == 0) {
             }
             .output{
                 float:left;
-                width:500px;
+                width:550px;
                 height:640px;
                 border:1px dotted black;
             }
