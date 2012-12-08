@@ -81,10 +81,17 @@ $numberTest = isset($_GET['num']) && $_GET['num'] > 0 ? $_GET['num'] : 1;
             img{
                 vertical-align:top;padding-right:5px;
             }
+            div.copyright{
+                color:#CCC;
+            }
+            div.copyright a{
+                color:#CCC;
+            }
         </style>
     </head>
     <body>
-        <h1>Speed Test</h1>
+        <div class="copyright">Copyright by Robert Stoll - licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></div>
+        <h1>Speed Test - powered by tutteli.ch</h1>
         <form method="post" action="run.php">
             <div style="float:left;margin-right: 20px;">
                 <table id="tests" style="border:0">
@@ -104,5 +111,6 @@ $numberTest = isset($_GET['num']) && $_GET['num'] > 0 ? $_GET['num'] : 1;
             </div>
             <div style="clear:both"></div>
         </form>
+        
     </body>
 </html>

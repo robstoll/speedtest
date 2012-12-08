@@ -76,7 +76,6 @@ if ($i == 0) {
             }
             .output{
                 float:left;
-                width:550px;
                 height:640px;
                 border:1px dotted black;
             }
@@ -84,10 +83,26 @@ if ($i == 0) {
                 width: 245px;
                 height: 580px;
             }
+            .output .test{
+                float:left;
+                margin-right:10px;
+            }
+            div.copyright{
+                color:#CCC;
+            }
+            div.copyright a{
+                color:#CCC;
+            }
+            div.examine{
+                text-align:right;
+                margin-top:10px;
+                margin-right:10px;
+            }
         </style>
     </head>
     <body>
-        <h1 id="done" style="display:none">done!!!</h1>
+        <div class="copyright">Copyright by Robert Stoll - licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></div>
+        <h1><span id="done" style="display:none">done!!!</span></h1>
         <?php
         $length = \count($tests);
         $count=0;
@@ -97,14 +112,14 @@ if ($i == 0) {
                     <form target="_blank" action="http://www.physics.csbsju.edu/cgi-bin/stats/t-test_paste.n.plot" method="post">
             <?php }
         ?>
-                        <div style="float:left">
+                        <div class="test">
             <?php echo $tests[$i]; ?><br/>
                 <textarea name="<?php echo ($count%2==0) ? 'A':'B'?>" id="output<?php echo $i; ?>"></textarea>
                         </div>
         <?php     
             if($count%2==1){?>
                         <div style="clear:both"></div>
-                        <div style="text-align:right;margin-top:10px;"><input type="submit" value="examine"/></div>
+                        <div class="examine"><input type="submit" value="examine"/></div>
                     </form>
                 </div>
             <?php }
