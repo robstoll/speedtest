@@ -2,6 +2,8 @@ Speedtest - a PHP framework to conduct speed tests.
 ===================================================
 Simple but very useful GUI to conduct speed tests with PHP and it is open source :)
 
+.. image:: https://bitbucket.org/rstoll/speedtest/downloads/Speedtest%20in%20action.png
+
 Wou want to write your own test? Simply add your source code of your test class to the src folder whereby the structure has to follow the convention one folder for each namespace and the filename must be the same as the class name.
 For instance, ::
 

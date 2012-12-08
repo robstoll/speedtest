@@ -119,7 +119,7 @@ if ($i == 0) {
         <?php     
             if($count%2==1){?>
                         <div style="clear:both"></div>
-                        <div class="examine"><input type="submit" value="examine"/></div>
+                        <div class="examine"><input type="submit" value="analyse"/></div>
                     </form>
                 </div>
             <?php }

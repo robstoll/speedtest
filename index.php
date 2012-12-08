@@ -91,7 +91,7 @@ $numberTest = isset($_GET['num']) && $_GET['num'] > 0 ? $_GET['num'] : 1;
     </head>
     <body>
         <div class="copyright">Copyright by <a href="mailto:rstoll@tutteli.ch">Robert Stoll</a> - licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></div>
-        <h1>Speed Test - powered by tutteli.ch</h1>
+        <h1>Speedtest - powered by <a href="http://tutteli.ch">tutteli.ch</a></h1>
         <form method="post" action="run.php">
             <div style="float:left;margin-right: 20px;">
                 <table id="tests" style="border:0">
