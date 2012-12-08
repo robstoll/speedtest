@@ -1,8 +1,13 @@
 Speedtest - a PHP framework to conduct speed tests.
 ===================================================
-Simple but very useful GUI to conduct speed tests with PHP and it is open source :)
+| Simple but very useful GUI to conduct speed tests with PHP and it is open source :)
+| Do not use it in a productive environment since it can slow down your system and it has no security features at all.
+
+| 
 
 .. image:: https://bitbucket.org/rstoll/speedtest/downloads/Speedtest%20in%20action.png
+
+| 
 
 Wou want to write your own test? Simply add your source code of your test class to the src folder whereby the structure has to follow the convention one folder for each namespace and the filename must be the same as the class name.
 For instance, ::
@@ -46,7 +51,9 @@ Btw. Preincrement is slightly faster ca. 0.2 microseconds with ::
 	degrees of freedom =198
 	The probability of this result, assuming the null hypothesis, is 0.010 
 
------
+
+| 
+
 
 | Copyright 2012 Robert Stoll <rstoll@tutteli.ch>
 | 
