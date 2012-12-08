@@ -8,7 +8,7 @@ For instance, ::
     com\exmaple\PreIncrement -> src\com\example\PreIncrement.php
     com\exmaple\PostIncrement -> src\com\exmaple\PostIncrement.php 
     
-The files would contain ::
+PreIncrement.php would contain ::
 
     class PreIncrement extends \ch\tutteli\speedtest\template\ASpeedTest{
         protected function run(){
@@ -16,6 +16,9 @@ The files would contain ::
             ++$i;
         }
     }
+	
+And PostIncrement.php would contain ::
+	
     class PostIncrement extends \ch\tutteli\speedtest\template\ASpeedTest{
         protected function run(){
             $i=0;
@@ -34,13 +37,12 @@ In order that your new test classes show up you have to modify index.php. Add yo
 
 That's it, you should now see the classes on the start page.
 
-Btw. Preincrement is slightly faster ca. 0.2 microseconds with: 
+Btw. Preincrement is slightly faster ca. 0.2 microseconds with ::
 
-
-| t= 2.59
-| sdev= 0.548E-06
-| degrees of freedom =198
-| The probability of this result, assuming the null hypothesis, is 0.010 
+	t= 2.59
+	sdev= 0.548E-06
+	degrees of freedom =198
+	The probability of this result, assuming the null hypothesis, is 0.010 
 
 
 | Copyright 2012 Robert Stoll <rstoll@tutteli.ch>
