@@ -101,7 +101,7 @@ if ($i == 0) {
         </style>
     </head>
     <body>
-        <div class="copyright">Copyright by Robert Stoll - licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></div>
+        <div class="copyright">Copyright by <a href="mailto:rstoll@tutteli.ch">Robert Stoll</a> - licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></div>
         <h1><span id="done" style="display:none">done!!!</span></h1>
         <?php
         $length = \count($tests);

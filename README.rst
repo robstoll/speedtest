@@ -44,6 +44,7 @@ Btw. Preincrement is slightly faster ca. 0.2 microseconds with ::
 	degrees of freedom =198
 	The probability of this result, assuming the null hypothesis, is 0.010 
 
+-----
 
 | Copyright 2012 Robert Stoll <rstoll@tutteli.ch>
 | 
