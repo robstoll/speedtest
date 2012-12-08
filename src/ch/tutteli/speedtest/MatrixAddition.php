@@ -19,13 +19,10 @@
 
 namespace ch\tutteli\speedtest;
 
-class AdditionTypeSafe extends ASpeedTest {
+class MatrixAddition extends template\AMatrixAddition {
 
-    protected function run() {
-        $number = 0;
-        for ($i = 0; $i < 100000; ++$i) {
-            $number+=1;
-        }
+    protected function getMatrixValue() {
+        return "1";
     }
 
 }

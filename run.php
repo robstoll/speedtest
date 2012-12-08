@@ -55,9 +55,10 @@ if ($i == 0) {
                     j=0;
                 }
                 if(i >=  <?php echo $howManyRuns; ?>){
+                    $('#done').css('display','block');
                     return;
                 }
-                window.setTimeout(run,5);
+                window.setTimeout(run,1);
             });
         }
         $(document).ready(function(){
@@ -86,6 +87,7 @@ if ($i == 0) {
         </style>
     </head>
     <body>
+        <h1 id="done" style="display:none">done!!!</h1>
         <?php
         $length = \count($tests);
         $count=0;

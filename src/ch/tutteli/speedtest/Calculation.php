@@ -19,13 +19,10 @@
 
 namespace ch\tutteli\speedtest;
 
-class Addition extends ASpeedTest {
+class Calculation extends template\ASpeedTest {
 
     protected function run() {
-        $number = 0;
-        for ($i = 0; $i < 100000; $i++) {
-            $number+="1";
-        }
+        $number = ("0" + "1" - "2" / "10") * "100" + "2" - "100";
     }
 
 }

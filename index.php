@@ -37,19 +37,21 @@ $options = '<option value="0">Please select</option>';
 foreach ($arr as $file) {
     $options .= '<option>' . $file . '</option>';
 }
-$jsOptions = str_replace('\\','\\\\',$options);
+$jsOptions = str_replace('\\', '\\\\', $options);
+
+$numberTest = isset($_GET['num']) && $_GET['num'] > 0 ? $_GET['num'] : 3;
 ?>
 <html>
     <head>
         <title>Speed Test - tutteli.ch</title>
         <script type="text/javascript" src="jquery.min.js"></script>
         <script type="text/javascript">
-            var testCounter=3;
+            var testCounter=<?php $numberTest + 1 ?>;
             function addTest(){
                 $('#tests').append(
-                    $('<tr><td>Test '+testCounter +'.1</td><td><select name="tests[]"><?php echo $jsOptions ?></select></td></tr>'+
+                $('<tr><td>Test '+testCounter +'.1</td><td><select name="tests[]"><?php echo $jsOptions ?></select></td></tr>'+
                     '<tr><td>Test '+testCounter+'.2</td><td><select name="tests[]"><?php echo $jsOptions; ?></select></td></tr>')
-                );
+            );
                 ++testCounter;
             }
         </script>
@@ -68,10 +70,10 @@ $jsOptions = str_replace('\\','\\\\',$options);
                     <tr>
                         <td>How many runs:</td><td> <input type="text" name="howManyRuns" value="10"/></td>
                     </tr>
-                    <tr><td>Test 1.1</td><td><select name="tests[]"><?php echo $options; ?></select></td></tr>
-                    <tr><td>Test 1.2</td><td><select name="tests[]"><?php echo $options; ?></select></td></tr>
-                    <tr><td>Test 2.1</td><td><select name="tests[]"><?php echo $options; ?></select></td></tr>
-                    <tr><td>Test 2.2</td><td><select name="tests[]"><?php echo $options; ?></select></td></tr>    
+                    <?php for ($i = 1; $i <= $numberTest; ++$i) { ?>
+                        <tr><td>Test <?php echo $i; ?>.1</td><td><select name="tests[]"><?php echo $options; ?></select></td></tr>
+                        <tr><td>Test <?php echo $i; ?>.2</td><td><select name="tests[]"><?php echo $options; ?></select></td></tr>
+                    <?php } ?>
                 </table>
                 <br/>
             </div>

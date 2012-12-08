@@ -16,20 +16,15 @@
  * limitations under the License.
  * 
  */
+
 namespace ch\tutteli\speedtest;
 
-abstract class ASpeedTest{
-    
-    abstract protected function run();
-    
-    public function test(){
-        $time = \microtime(true);
-        $this->run();
-        return \microtime(true) - $time;
+class CalculationTypeSafe extends template\ASpeedTest {
+
+    protected function run() {
+        $number = (0 + 1 - 2 / 10) * 100 + 2 - 100;
     }
 
-
-
-
 }
+
 ?>
