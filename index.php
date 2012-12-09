@@ -37,7 +37,6 @@ function getFiles($namespaces) {
 $tests = getFiles(
         array(
             'ch\tutteli\speedtest',
-            'com\example\speedtest'
         )
 );
 

@@ -19,7 +19,7 @@
 
 namespace ch\tutteli\speedtest;
 
-class StringConcatenation extends template\ASpeedTest {
+class StringIntConcatenation extends template\ASpeedTest {
 
     protected function run() {
         $counter = 1;

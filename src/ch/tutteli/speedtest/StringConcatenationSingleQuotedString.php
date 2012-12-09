@@ -17,12 +17,18 @@
  * 
  */
 
-namespace com\example\speedtest;
+namespace ch\tutteli\speedtest;
 
-class PreIncrement extends \ch\tutteli\speedtest\template\ASpeedTest{
-	protected function run(){
-		$i=0;
-		++$i;
-	}
+class StringConcatenationSingleQuotedString extends template\ASpeedTest {
+
+    protected function run() {
+        '\n'.'\t'.'$c'.
+                '\n'.'\t'.'$c'.
+                '\n'.'\t'.'$c'.
+                '\n'.'\t'.'$c'.
+                '\n'.'\t'.'$c';
+    }
+
 }
+
 ?>
