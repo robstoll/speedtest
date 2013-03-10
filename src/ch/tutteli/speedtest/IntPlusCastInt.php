@@ -19,12 +19,11 @@
 
 namespace ch\tutteli\speedtest;
 
-class PreIncrement extends template\ASpeedTest
-{
+class IntPlusCastInt extends template\ASpeedTest {
 
     protected function run() {
-        $i = 0;
-        ++$i;
+        $number = 0;
+        $number += (int) "1";
     }
 
 }

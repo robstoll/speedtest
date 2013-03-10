@@ -19,12 +19,12 @@
 
 namespace ch\tutteli\speedtest;
 
-class PreIncrement extends template\ASpeedTest
+class LoadClassAutoload extends template\ASpeedTest
 {
 
     protected function run() {
-        $i = 0;
-        ++$i;
+        //run.php has already implemented an autoload function
+        new dummy\Bar();
     }
 
 }

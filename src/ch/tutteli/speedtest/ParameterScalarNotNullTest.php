@@ -19,14 +19,19 @@
 
 namespace ch\tutteli\speedtest;
 
-class PreIncrement extends template\ASpeedTest
-{
+class ParameterScalarNotNullTest extends template\ASpeedTest {
 
     protected function run() {
-        $i = 0;
-        ++$i;
+        parameterNull(1,2,3);
     }
 
+
+}
+//int $foo
+function parameterNull($foo,$bar,$a){
+    $foo!=null or exit('$foo is null');
+    $bar!=null or exit('$bar is null');
+    $a!=null or exit('$bar is null');
 }
 
 ?>

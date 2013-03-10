@@ -19,12 +19,13 @@
 
 namespace ch\tutteli\speedtest;
 
-class PreIncrement extends template\ASpeedTest
+include __DIR__.'/dummy/Bar.php';
+
+class LoadClassInclude extends template\ASpeedTest
 {
 
     protected function run() {
-        $i = 0;
-        ++$i;
+        new dummy\Bar();
     }
 
 }

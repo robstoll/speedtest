@@ -42,7 +42,8 @@ $tests = getFiles(
 
 $options = '<option value="0">Please select</option>';
 foreach ($tests as $test) {
-    $options .= '<option>' . $test . '</option>';
+    $className = str_pad(\substr($test,  \strrpos($test, "\\")+1),45, "_");
+    $options .= '<option value="'.$test.'">' .$className.' '. $test . '</option>';
 }
 $jsOptions = str_replace('\\', '\\\\', $options);
 
@@ -85,6 +86,9 @@ $numberTest = isset($_GET['num']) && $_GET['num'] > 0 ? $_GET['num'] : 1;
             }
             div.copyright a{
                 color:#CCC;
+            }
+            select{
+                font-family: Courier New;
             }
         </style>
     </head>

@@ -17,6 +17,10 @@
  */
 
 $howManyRuns = (isset($_POST['howManyRuns']) && $_POST['howManyRuns'] > 0) ? $_POST['howManyRuns'] : 10;
+if($howManyRuns % 2 !=0){
+    ++$howManyRuns;
+}
+$halfHowManyRuns = $howManyRuns/2;
 $output = isset($_POST['output']) ? $_POST['output'] : 'output';
 $tests = (isset($_POST['tests']) && is_array($_POST['tests'])) ? $_POST['tests'] : array();
 $i = 0;
@@ -27,9 +31,9 @@ foreach ($tests as $test) {
         if ($i != 0) {
             $jsTests .= ',';
         }
-        $jsTests .= '"' . \str_replace('\\', '\\\\', $test) . '"';
+        $jsTests .= '"'.\str_replace('\\', '\\\\', $test).'"';
         $i = 1;
-        $tmpTests[]=$test;
+        $tmpTests[] = $test;
     }
 }
 $tests = $tmpTests;
@@ -45,25 +49,38 @@ if ($i == 0) {
             var i=0;
             var j=0;
             var tests = [<?php echo $jsTests; ?>];
-        var length = tests.length;
-        function run(){
-            $.get('test.php', 'test='+tests[j], function(data){
-                $('#output'+j).html($('#output'+j).html()+data+'\n');
-                ++j;
-                if(j >= length){
-                    ++i;
-                    j=0;
-                }
-                if(i >=  <?php echo $howManyRuns; ?>){
-                    $('#done').css('display','block');
-                    return;
-                }
-                window.setTimeout(run,1);
+            var length = tests.length;
+            function run(){
+                $.get('test.php', 'test='+tests[j], function(data){
+                    $('#output'+j).html($('#output'+j).html()+data+'\n');
+                    if(i < <?php echo $halfHowManyRuns; ?>){
+                        ++j;
+                        if(j >= length){
+                            ++i;
+                            if(i < <?php echo $halfHowManyRuns; ?>){
+                                j=0;
+                            }else{
+                                j=length-1;
+                            }
+                        }
+                    }else{
+                        --j;
+                        if(j < 0){
+                            ++i;
+                            j=length-1;
+                        }
+                    }
+                    if(i >=  <?php echo $howManyRuns; ?>){
+                        $('#done').css('display','block');
+                        return;
+                    }
+                    run();
+                    
+                });
+            }
+            $(document).ready(function(){
+                run();
             });
-        }
-        $(document).ready(function(){
-            run();
-        });
         </script>
         <style type="text/css">
             body{
@@ -105,25 +122,27 @@ if ($i == 0) {
         <h1><span id="done" style="display:none">done!!!</span></h1>
         <?php
         $length = \count($tests);
-        $count=0;
+        $count = 0;
         for ($i = 0; $i < $length; ++$i) {
-            if($count%2==0){?>
+            if ($count % 2 == 0) {
+                ?>
                 <div class="output">
                     <form target="_blank" action="http://www.physics.csbsju.edu/cgi-bin/stats/t-test_paste.n.plot" method="post">
-            <?php }
-        ?>
-                        <div class="test">
-            <?php echo $tests[$i]; ?><br/>
-                <textarea name="<?php echo ($count%2==0) ? 'A':'B'?>" id="output<?php echo $i; ?>"></textarea>
-                        </div>
-        <?php     
-            if($count%2==1){?>
+                    <?php }
+                    ?>
+                    <div class="test">
+    <?php echo $tests[$i]; ?><br/>
+                        <textarea name="<?php echo ($count % 2 == 0) ? 'A' : 'B' ?>" id="output<?php echo $i; ?>"></textarea>
+                    </div>
+                    <?php if ($count % 2 == 1) { ?>
                         <div style="clear:both"></div>
                         <div class="examine"><input type="submit" value="analyse"/></div>
                     </form>
                 </div>
-            <?php }
+            <?php
+            }
             ++$count;
-        } ?>
+        }
+        ?>
     </body>
 </html>

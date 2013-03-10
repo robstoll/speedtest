@@ -19,12 +19,12 @@
 
 namespace ch\tutteli\speedtest;
 
-class PreIncrement extends template\ASpeedTest
+class Comparison extends template\ASpeedTest
 {
 
     protected function run() {
-        $i = 0;
-        ++$i;
+        $a = 1;
+        $a == null;
     }
 
 }
