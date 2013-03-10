@@ -19,38 +19,14 @@
 
 namespace ch\tutteli\speedtest\template;
 
-abstract class ASpeedTest {
-
-    /**
-     * Implement here the test
-     */
-    abstract protected function run();
-
-    /**
-     * Overwrite method if you have a setup for your test
-     * (same for both tests)
-     */
-    protected function setup(){
-        
-    }
+abstract class AEcho extends ASpeedTest {
     
-     /**
-     * Overwrite method if you have a setup for your test
-     * (same for both tests)
-     */
+    protected function setup() {
+        \ob_start();
+    }
     protected function teardown(){
-        
+        \ob_end_clean();
     }
-
-    public function test() {
-        $this->setup();
-        $time = \microtime(true);
-        $this->run();
-        $time = \microtime(true) - $time;
-        $this->teardown();
-        return $time;
-    }
-
 }
 
 ?>
