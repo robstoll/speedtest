@@ -19,19 +19,16 @@
 
 namespace ch\tutteli\speedtest;
 
-class AdditionClassConstantEnrolled extends template\ASpeedTest
+class ToStringDirectCall extends template\ASpeedTest
 {
 
     protected function run() {
-        $a = 1 + 2 + 4;
+        $a = 'hello'.$this->__toString();
     }
 
-}
-
-class Foo
-{
-
-    const a = 2;
+    public function __toString() {
+        return ' robert';
+    }
 
 }
 
