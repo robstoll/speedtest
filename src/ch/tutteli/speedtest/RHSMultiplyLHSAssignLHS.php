@@ -19,18 +19,14 @@
 
 namespace ch\tutteli\speedtest;
 
-class ParameterScalarNullTest extends template\ASpeedTest {
+class RHSMultiplyLHSAssignLHS extends template\ASpeedTest
+{
 
     protected function run() {
-        parameterNull(1,2,3);
+        $a = 0;
+        $a = $a * 1;
     }
 
-
-}
-//int $foo=null
-function parameterNull($foo,$bar,$a){
-    
-    
 }
 
 ?>

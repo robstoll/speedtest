@@ -19,18 +19,12 @@
 
 namespace ch\tutteli\speedtest;
 
-class ParameterScalarNullTest extends template\ASpeedTest {
+class Parantheses extends template\ASpeedTest {
 
     protected function run() {
-        parameterNull(1,2,3);
+        $i = ((1) + (1)) + 2;
     }
 
-
-}
-//int $foo=null
-function parameterNull($foo,$bar,$a){
-    
-    
 }
 
 ?>
