@@ -19,13 +19,12 @@
 function getFiles($namespaces) {
     $arr = array();
     foreach ($namespaces as $namespace) {
-        $path = __DIR__ . '/src/' . $namespace;
+        $path = __DIR__.'/src/'.$namespace;
 
         if ($handle = \opendir($path)) {
-            /* This is the correct way to loop over the directory. */
             while (($entry = readdir($handle)) !== false) {
                 if ($entry != "." && $entry != ".." && \substr($entry, -4) == '.php') {
-                    $arr[] = $namespace .'\\'. \substr($entry, 0, -4);
+                    $arr[] = $namespace.'\\'.\substr($entry, 0, -4);
                 }
             }
             closedir($handle);
@@ -42,8 +41,9 @@ $tests = getFiles(
 
 $options = '<option value="0">Please select</option>';
 foreach ($tests as $test) {
-    $className = str_pad(\substr($test,  \strrpos($test, "\\")+1),45, "_");
-    $options .= '<option value="'.$test.'">' .$className.' '. $test . '</option>';
+    $className = \substr($test, \strrpos($test, "\\") + 1);
+    $classNameWithUnderscores = str_pad($className, 45, "_");
+    $options .= '<option value="'.$test.'">'.$classNameWithUnderscores.' '.\substr($test, 0, -\strlen($className)).'</option>';
 }
 $jsOptions = str_replace('\\', '\\\\', $options);
 
@@ -54,12 +54,12 @@ $numberTest = isset($_GET['num']) && $_GET['num'] > 0 ? $_GET['num'] : 1;
         <title>Speed Test - tutteli.ch</title>
         <script type="text/javascript" src="jquery.min.js"></script>
         <script type="text/javascript">
-            var testCounter=<?php echo $numberTest + 1 ?>;
-            function addTest(){
+            var testCounter =<?php echo $numberTest + 1 ?>;
+            function addTest() {
                 $('#tests').append(
-                $('<tr><td>Test '+testCounter +'.1</td><td><select name="tests[]"><?php echo $jsOptions ?></select></td></tr>'+
-                    '<tr><td>Test '+testCounter+'.2</td><td><select name="tests[]"><?php echo $jsOptions; ?></select></td></tr>')
-            );
+                        $('<tr><td>Test ' + testCounter + '.1</td><td><select name="tests[]"><?php echo $jsOptions ?></select></td></tr>' +
+                        '<tr><td>Test ' + testCounter + '.2</td><td><select name="tests[]"><?php echo $jsOptions; ?></select></td></tr>')
+                        );
                 ++testCounter;
             }
         </script>
@@ -99,7 +99,7 @@ $numberTest = isset($_GET['num']) && $_GET['num'] > 0 ? $_GET['num'] : 1;
             <div style="float:left;margin-right: 20px;">
                 <table id="tests" style="border:0">
                     <tr>
-                        <td>How many runs:</td><td> <input type="text" name="howManyRuns" value="100"/></td>
+                        <td>How many runs:</td><td> <input type="text" name="howManyRuns" value="100" style="margin-right:15px;"/> Analyse all after run <input type="checkbox" checked="checked" name="analyseAfter"/></td>
                     </tr>
                     <?php for ($i = 1; $i <= $numberTest; ++$i) { ?>
                         <tr><td>Test <?php echo $i; ?>.1</td><td><select name="tests[]"><?php echo $options; ?></select></td></tr>
@@ -110,10 +110,11 @@ $numberTest = isset($_GET['num']) && $_GET['num'] > 0 ? $_GET['num'] : 1;
             </div>
             <div>
                 <input type="submit" value="Run!"/>
-                <button onclick="addTest();return false;"><img src="add.png"/>Add a test</button>
+                <button onclick="addTest();
+                return false;"><img src="add.png"/>Add a test</button>
             </div>
             <div style="clear:both"></div>
         </form>
-        
+
     </body>
 </html>

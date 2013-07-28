@@ -23,6 +23,7 @@ if ($howManyRuns % 2 != 0) {
 $halfOfTheRuns = $howManyRuns / 2;
 $output = isset($_POST['output']) ? $_POST['output'] : 'output';
 $tests = (isset($_POST['tests']) && is_array($_POST['tests'])) ? $_POST['tests'] : array();
+$shallAnalyseAllAfterRun = (isset($_POST['analyseAfter']) && $_POST['analyseAfter'] = 'on') ? 'true' : 'false';
 $i = 0;
 $jsTests = '';
 $tmpTests = array();
@@ -47,13 +48,15 @@ if ($i == 0) {
         <script type="text/javascript" src="jquery.min.js"></script>
         <script type="text/javascript" src="chiCalc.js"></script>
         <script type="text/javascript">
-            
+
             var tests = [<?php echo $jsTests; ?>];
             var totalRuns = <?php echo $howManyRuns; ?>;
             var halfOftheRuns = <?php echo $halfOfTheRuns; ?>;
             var length = tests.length;
             var runCounter1 = 0;
             var runCounter2 = 0;
+            var shallAnalyseAllAfterRun = <?php echo $shallAnalyseAllAfterRun; ?>
+
         </script>
         <script type="text/javascript" src="run.js"></script>
         <style type="text/css">
@@ -82,7 +85,6 @@ if ($i == 0) {
             }
             .output{
                 float:left;
-                height:640px;
                 border:1px dotted black;
             }
             .output textarea{
@@ -109,18 +111,21 @@ if ($i == 0) {
                 line-height:1.5em;
             }
             .better{
-                background-color:#009933;
+                background-color:#00ff66;
             }
             .gap th,
             .gap td{
                 padding-top:20px;
+            }
+            .runDetail{
+                display:none;
             }
 
         </style>
     </head>
     <body>
         <div class="copyright">Copyright by <a href="mailto:rstoll@tutteli.ch">Robert Stoll</a> - licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></div>
-        <h1><span id="done" style="display:none">done!!!</span></h1>
+        <h1><span id="status"></span></h1>
         <?php
         $length = \count($tests);
         $count = 0;
