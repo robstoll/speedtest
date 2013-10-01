@@ -1,6 +1,6 @@
 Speedtest - a PHP framework to conduct speed tests.
-===================================================
-| Simple but very useful GUI to conduct speed tests with PHP and it is open source :)
+---------------------------------------------------
+| Simple but very useful GUI to conduct speed tests with PHP (including a Kruskal-Wallis analysis) and it is open source :)
 | Do not use it in a productive environment since it can slow down your system and it has no security features at all.
 
 | 
@@ -9,7 +9,7 @@ Speedtest - a PHP framework to conduct speed tests.
 
 | 
 
-Wou want to write your own test? Simply add your source code of your test class to the src folder whereby the structure has to follow the convention one folder for each namespace and the filename must be the same as the class name.
+You want to write your own test? Simply add your test class to the src folder and make sure the structure follows the convention: one folder for each namespace and one file per class in which the filename must be the same as the class name.
 For instance, ::
 
     com\exmaple\PreIncrement -> src\com\example\PreIncrement.php
@@ -44,17 +44,9 @@ In order that your new test classes show up you have to modify index.php. Add yo
 
 That's it, you should now see the classes on the start page.
 
-Btw. Preincrement is slightly faster ca. 0.2 microseconds with ::
+Btw. Preincrement is slightly faster ca. 0.2 microseconds but with a significance level p < 2e-9
 
-	t= 2.59
-	sdev= 0.548E-06
-	degrees of freedom =198
-	The probability of this result, assuming the null hypothesis, is 0.010 
-
-
-| 
-
-
+|
 | Copyright 2013 Robert Stoll <rstoll@tutteli.ch>
 | 
 | Licensed under the Apache License, Version 2.0 (the "License");
