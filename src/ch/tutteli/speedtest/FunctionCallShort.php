@@ -19,7 +19,7 @@
 
 namespace ch\tutteli\speedtest;
 
-class PHPFunctionCallShort  extends template\ASpeedTest {
+class FunctionCallShort  extends template\ASpeedTest {
 
     protected function run() {
         $name = str_replace("A","D","ABC");
