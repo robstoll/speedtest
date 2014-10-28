@@ -24,7 +24,7 @@ class Comparison extends template\ASpeedTest
 
     protected function run() {
         $a = 1;
-        $a == null;
+        $a == "1";
     }
 
 }

@@ -24,7 +24,7 @@ class ComparisonTypeSafe extends template\ASpeedTest
 
     protected function run() {
         $a = 1;
-        $a == (int) null;
+        $a == (int) "1";
     }
 
 }

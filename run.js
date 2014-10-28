@@ -299,9 +299,9 @@ function formatAnalysisResult(kruskalWallisData) {
                 </td></tr>\
                 <tr class="runDetail"><th>Total Points</th><td>' + kruskalWallisData.rankSumTotal + '</td></tr>\
                 <tr class="runDetail"><th>Average Rank</th><td>' + kruskalWallisData.expectedAverageRankSum + '</td></tr>\
-                <tr class="runDetail"><th>H</th><td>' + toExpIfSmall(kruskalWallisData.H) + '</td></tr>\
-                <tr class="runDetail"><th>D</th><td>' + toExpIfSmall(kruskalWallisData.D) + '</td></tr>\
-                <tr class="runDetail"><th>Adjusted H</th><td>' + toExpIfSmall(kruskalWallisData.adjustedH) + '</td></tr>\
+                <tr class="runDetail"><th>H</th><td>' + formatNumber(kruskalWallisData.H) + '</td></tr>\
+                <tr class="runDetail"><th>D</th><td>' + formatNumber(kruskalWallisData.D) + '</td></tr>\
+                <tr class="runDetail"><th>Adjusted H</th><td>' + formatNumber(kruskalWallisData.adjustedH) + '</td></tr>\
                 <tr class="runDetail"><th>df</th><td>1</td></tr>\
                 ' + formatFasterOne(kruskalWallisData) + '\
                 <tr><th>&nbsp;</th><td>&nbsp;</td></tr>\
@@ -315,7 +315,7 @@ function formatAnalysisResult(kruskalWallisData) {
  */
 function formatFasterOne(kruskalWallisData) {
     var res = calculateFaster(kruskalWallisData);
-    return '<tr><th>' + res.idFast + '\'s median is x sec. faster than ' + res.idSlow + '\'s</th><td>' + toExpIfSmall(res.diff) + '</td></tr>\
+    return '<tr><th>' + res.idFast + '\'s median is x ms. faster than ' + res.idSlow + '\'s</th><td>' + formatNumber(res.diff) + '</td></tr>\
             <tr><th>' + res.idFast + '\'s median is x as fast as ' + res.idSlow + '\'s</th><td>' + res.timesFaster + '</td></tr>';
 }
 
@@ -342,8 +342,6 @@ function calculateFaster(kruskalWallisData) {
     }
 }
 
-
-
 /**
  * @param {TestData} testData
  * @param {TestData} compareData
@@ -354,36 +352,35 @@ function formatTestData(testData, compareData) {
                 <th>Rank Sum ' + testData.id + ' :</th><td>' + testData.rankSum + '</td>\
             </tr>\
             <tr ' + (testData.medianTime < compareData.medianTime ? 'class="better"' : '') + '>\
-                <th>Median Time ' + testData.id + ' :</th><td>' + toExpIfSmall(testData.medianTime) + '</td>\
+                <th>Median Time ' + testData.id + ' :</th><td>' + formatNumber(testData.medianTime) + ' ms</td>\
             </tr>\
             <tr ' + (testData.values[0] < compareData.values[0] ? 'class="better"' : '') + '>\
-                <th>fastest run ' + testData.id + ' :</th><td>' + toExpIfSmall(testData.values[0]) + '</td>\
+                <th>fastest run ' + testData.id + ' :</th><td>' + formatNumber(testData.values[0]) + ' ms</td>\
             </tr>\
             <tr ' + (testData.values[testData.values.length-1] < compareData.values[testData.values.length-1] ? 'class="better"' : '') + '>\
-                <th>slowest run ' + testData.id + ' :</th><td>' + toExpIfSmall(testData.values[testData.values.length-1]) + '</td>\
+                <th>slowest run ' + testData.id + ' :</th><td>' + formatNumber(testData.values[testData.values.length-1]) + ' ms</td>\
             </tr>\
             <tr ' + (testData.totalTime < compareData.totalTime ? 'class="better"' : '') + '>\
-                <th>Total Time ' + testData.id + ' :</th><td>' + toExpIfSmall(testData.totalTime) + '</td>\
+                <th>Total Time ' + testData.id + ' :</th><td>' + formatNumber(testData.totalTime/1000) + ' s</td>\
             </tr>\
             <tr ' + (testData.averageTime < compareData.averageTime ? 'class="better"' : '') + '>\
-                <th>Average Time ' + testData.id + ' :</th><td>' + toExpIfSmall(testData.averageTime) + '</td>\
+                <th>Average Time ' + testData.id + ' :</th><td>' + formatNumber(testData.averageTime) + ' ms</td>\
             </tr>\
             <tr ' + (testData.averageTimePlusMinus5PercentAwayFromMedian < compareData.averageTimePlusMinus5PercentAwayFromMedian ? 'class="better"' : '') + '>\
                 <th><span title="Average time of the values +/- 5% away from the median">Average Time +/- 5% median</span> ' + testData.id + ' :</th>\
-                <td>' + (testData.averageTimePlusMinus5PercentAwayFromMedian != -1 ? toExpIfSmall(testData.averageTimePlusMinus5PercentAwayFromMedian) : 'Not enought samples') + '</td>\
+                <td>' + (testData.averageTimePlusMinus5PercentAwayFromMedian != -1 ? formatNumber(testData.averageTimePlusMinus5PercentAwayFromMedian) + ' ms' : 'Not enought samples') + '</td>\
             </tr>';
 }
 
-function toExpIfSmall(number) {
-    if (number < 0.001) {
-        return number.toExponential();
-    }
-    return number;
+function formatNumber(number) {
+    return (number/1000).toFixed(3);
 }
 
 function formatSignificanceLevel(number) {
     if (number == 0) {
         return '0 (< 2e-9)';
+    } else if (number < 0.001) {
+        return number.toExponential();
     }
-    return toExpIfSmall(number);
+	return number;
 }
