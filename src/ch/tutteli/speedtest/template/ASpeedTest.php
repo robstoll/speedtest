@@ -44,11 +44,12 @@ abstract class ASpeedTest {
 
     public function test() {
         $this->setup();
-        $time = \microtime(true);
-        $this->run();
-        $time = \microtime(true) - $time;
+		$c = new \HRTime\StopWatch;
+		$c->start();
+		$this->run();
+        $c->stop();
         $this->teardown();
-        return $time;
+		return $c->getElapsedTime(\HRTime\Unit::NANOSECOND);
     }
 
 }
